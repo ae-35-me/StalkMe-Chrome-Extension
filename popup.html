@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
   <title>StalkMe</title>
   <style>
     body {
@@ -73,21 +74,66 @@
       padding-top: 10px;
     }
 
-    input[type="password"] {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 5px;
-      box-sizing: border-box;
+    #numberList {
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      padding: 5px;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
     }
 
-    #aiResult {
+    .number-item {
+      border-bottom: 1px solid #eee;
+      padding: 5px;
+      font-size: 12px;
+    }
+
+    .number-found {
+      color: #d93025;
+      font-weight: bold;
+      font-family: monospace;
+    }
+
+    .number-source {
+      color: #555;
+      font-size: 0.9em;
+      margin-top: 2px;
+    }
+
+    #formDataList {
       margin-top: 10px;
-      font-style: italic;
-      color: #333;
-      background: #f0f0f0;
-      padding: 10px;
-      border-radius: 4px;
+      border: 1px solid #ccc;
+      padding: 5px;
+      max-height: 250px;
+      overflow-y: auto;
       display: none;
+    }
+
+    .form-data-item {
+      border-bottom: 1px solid #eee;
+      padding: 8px;
+      font-size: 12px;
+      background-color: #fff3cd;
+      margin-bottom: 5px;
+      border-radius: 3px;
+    }
+
+    .form-field-label {
+      color: #856404;
+      font-weight: bold;
+    }
+
+    .form-field-value {
+      color: #d93025;
+      font-family: monospace;
+      margin-top: 3px;
+    }
+
+    .form-field-meta {
+      color: #666;
+      font-size: 0.85em;
+      margin-top: 3px;
     }
   </style>
 </head>
@@ -97,11 +143,26 @@
   <button id="actionButton">Track Me (Refresh Cookies)</button>
   <div id="cookieList">Loading cookies...</div>
 
+
+
   <div class="ai-section">
-    <h3>AI Surveillance</h3>
-    <input type="password" id="apiKey" placeholder="Enter Gemini API Key" />
-    <button id="analyzeButton">Analyze My Tabs</button>
-    <div id="aiResult"></div>
+    <h3>Sensitive Data Scan</h3>
+    <button id="scanNumbersButton">Scan Tabs for Numbers (xxx-xxx-xxxx)</button>
+    <div id="numberList"></div>
+  </div>
+
+  <div class="ai-section">
+    <h3>⚠️ Form Input Monitor</h3>
+    <p style="font-size: 11px; color: #666; margin: 5px 0;">Monitoring is always active. Just type in forms and view
+      captured data below.</p>
+    <button id="viewCapturedButton" style="background-color: #ff6b00;">View Captured Data</button>
+    <div id="formDataList"></div>
+  </div>
+
+  <div class="ai-section">
+    <h3>💉 Content Injection Demo</h3>
+    <p style="font-size: 11px; color: #666; margin: 5px 0;">Inject text into the demo field on sample_page.html</p>
+    <button id="injectContentButton" style="background-color: #e74c3c;">Inject "HACKED!" into Page</button>
   </div>
 
   <script src="popup.js"></script>

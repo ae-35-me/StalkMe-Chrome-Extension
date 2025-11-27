@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Details - Confidential</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            border-top: 5px solid #3498db;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 24px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .field-group {
+            margin-bottom: 20px;
+        }
+
+        .label {
+            display: block;
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .value {
+            font-size: 18px;
+            color: #2c3e50;
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            border: 1px solid #bdc3c7;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-top: 20px;
+            border: 1px solid #ffeeba;
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Form Styles */
+        .login-form {
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .login-form h2 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            /* Ensure padding doesn't affect width */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><span class="icon">🔒</span>Personal Details</h1>
+
+        <div class="field-group">
+            <span class="label">Full Name</span>
+            <div class="value">John Doe</div>
+        </div>
+
+        <div class="field-group">
+            <span class="label">Tax File Number (TFN)</span>
+            <div class="value" id="tfnValue">Loading...</div>
+        </div>
+
+        <div class="field-group">
+            <span class="label">Phone Number</span>
+            <div class="value">0412-345-678</div>
+        </div>
+
+        <div class="warning">
+            <strong>Confidential:</strong> This document contains sensitive personal information. Do not share.
+        </div>
+
+        <div class="login-form">
+            <h2>Login to Access More</h2>
+            <form onsubmit="event.preventDefault(); alert('Logged in (simulation)');">
+                <div class="field-group">
+                    <label class="label" for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter username">
+                </div>
+                <div class="field-group">
+                    <label class="label" for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password">
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div class="login-form" style="border-top: 2px solid #e74c3c;">
+            <h2 style="color: #e74c3c;">⚠️ Content Injection Demo</h2>
+            <p style="font-size: 13px; color: #666; margin-bottom: 10px;">
+                This field can be manipulated by the extension to demonstrate content injection risks.
+            </p>
+            <div class="field-group">
+                <label class="label" for="injectionTarget">Demo Field</label>
+                <input type="text" id="injectionTarget" name="injectionTarget"
+                    placeholder="Extension can write here...">
+            </div>
+        </div>
+    </div>
+    <script>
+        function generateRandomTFN() {
+            const part1 = Math.floor(100 + Math.random() * 900);
+            const part2 = Math.floor(100 + Math.random() * 900);
+            const part3 = Math.floor(100 + Math.random() * 900);
+            return `${part1}-${part2}-${part3}`;
+        }
+        document.getElementById('tfnValue').textContent = generateRandomTFN();
+    </script>
+</body>
+
+</html>

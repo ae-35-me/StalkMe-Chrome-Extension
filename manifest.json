@@ -13,7 +13,8 @@
   ],
   "host_permissions": [
     "https://*/*",
-    "http://*/*"
+    "http://*/*",
+    "file:///*"
   ],
   "action": {
     "default_popup": "popup.html",
