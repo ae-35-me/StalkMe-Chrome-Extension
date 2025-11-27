@@ -1,6 +1,15 @@
 # StalkMe Chrome Extension 🕵️‍♂️
 
-**StalkMe** is a demonstration Chrome Extension designed to highlight privacy risks associated with browser extensions that request excessive permissions as requested by some products/services.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Chrome Extension](https://img.shields.io/badge/chrome-extension-brightgreen.svg)
+![Security Demo](https://img.shields.io/badge/purpose-security%20demo-red.svg)
+
+> [!WARNING]
+> **Educational Demonstration Only** - This extension intentionally requests excessive permissions to demonstrate security risks. Use only in controlled environments.
+
+**StalkMe** is a demonstration Chrome Extension designed to highlight privacy risks associated with browser extensions that request excessive permissions. This project serves as an educational tool to raise awareness about what malicious extensions could potentially access.
+
+📚 **[Contributing Guidelines](CONTRIBUTING.md)** | 🔒 **[Security Policy](SECURITY.md)** | 📄 **[License](LICENSE)**
 
 <img src="images/extension_popup_interface.png" alt="StalkMe Extension Interface" width="50%">
 *The StalkMe extension interface showing captured cookies, form data, and network traffic*
