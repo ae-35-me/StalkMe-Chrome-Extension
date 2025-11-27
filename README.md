@@ -2,6 +2,9 @@
 
 **StalkMe** is a demonstration Chrome Extension designed to highlight privacy risks associated with browser extensions that request excessive permissions as requested by some products/services.
 
+![StalkMe Extension Interface](/Users/david/.gemini/antigravity/brain/2317124a-e52a-48ab-a162-35fb121380e5/stalkme_extension_popup_1764246195121.png)
+*The StalkMe extension interface showing captured cookies, form data, and network traffic*
+
 ## Features
 
 *   **🍪 Cookie Tracker**: Displays all cookies across all sites and highlights potential **Session Tokens** in red (based on name patterns and security flags).
@@ -36,6 +39,9 @@ A sample page (`sample_page.html`) is included for demonstration purposes. Open 
 - **Form monitoring**: Has a login form to demonstrate credential interception (monitoring is automatic)
 - **Content injection**: Has a demo field that can be filled by the extension
 
+![Sample Test Page](/Users/david/.gemini/antigravity/brain/2317124a-e52a-48ab-a162-35fb121380e5/sample_page_demo_1764246244800.png)
+*Sample page for testing form monitoring, number scanning, and content injection*
+
 ### Testing Form Monitoring
 1. Open `sample_page.html` in Chrome
 2. Type a username and password in the login form
@@ -59,6 +65,9 @@ A sample page (`sample_page.html`) is included for demonstration purposes. Open 
    - Cookie headers sent with requests
    - Set-Cookie headers from responses
    - HTTP status codes
+
+![Network Traffic Capture](/Users/david/.gemini/antigravity/brain/2317124a-e52a-48ab-a162-35fb121380e5/network_traffic_capture_1764246278063.png)
+*Network traffic monitor showing captured HTTP requests with sensitive headers highlighted*
 
 > [!NOTE]
 > **File URL Access**: The requirement to enable "Allow access to file URLs" is unique to testing with local HTML files (`sample_page.html`). In real-world scenarios, extensions with these permissions can access **all regular websites** (https:// and http://) without any additional user approval. This testing limitation does not reduce the security implications demonstrated by this extension.
