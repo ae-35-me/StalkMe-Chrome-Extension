@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>StalkMe</title>
+  <style>
+    body {
+      width: 350px;
+      padding: 10px;
+      font-family: sans-serif;
+    }
+
+    h1 {
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #d93025;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    button:hover {
+      background-color: #b31412;
+    }
+
+    #cookieList {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 5px;
+      font-size: 12px;
+    }
+
+    .cookie-item {
+      border-bottom: 1px solid #eee;
+      padding: 5px 0;
+      word-break: break-all;
+    }
+
+    .cookie-domain {
+      font-weight: bold;
+      color: #555;
+    }
+
+    .cookie-name {
+      color: #000;
+    }
+
+    .cookie-value {
+      color: #777;
+      font-family: monospace;
+    }
+
+    .session-token {
+      background-color: #ffebee;
+      border: 1px solid #d93025;
+    }
+
+    .session-token .cookie-name,
+    .session-token .cookie-value {
+      color: #d93025;
+      font-weight: bold;
+    }
+
+    .ai-section {
+      margin-top: 15px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 5px;
+      box-sizing: border-box;
+    }
+
+    #aiResult {
+      margin-top: 10px;
+      font-style: italic;
+      color: #333;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 4px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>StalkMe</h1>
+  <button id="actionButton">Track Me (Refresh Cookies)</button>
+  <div id="cookieList">Loading cookies...</div>
+
+  <div class="ai-section">
+    <h3>AI Surveillance</h3>
+    <div id="aiStatus" style="font-size: 12px; margin-bottom: 5px; color: #555;">Checking for built-in AI...</div>
+    <button id="recheckButton" style="display:none; background-color: #555; margin-bottom: 5px;">Recheck AI
+      Availability</button>
+    <button id="analyzeButton" disabled>Analyze My Tabs</button>
+    <div id="aiResult"></div>
+    <div id="debugInfo"
+      style="margin-top: 10px; font-size: 10px; color: #aaa; border-top: 1px solid #eee; padding-top: 5px;"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
