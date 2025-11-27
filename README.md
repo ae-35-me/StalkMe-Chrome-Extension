@@ -2,7 +2,7 @@
 
 **StalkMe** is a demonstration Chrome Extension designed to highlight privacy risks associated with browser extensions that request excessive permissions as requested by some products/services.
 
-![StalkMe Extension Interface](stalkme_extension_popup_1764246195121.png)
+<img src="images/extension_popup_interface.png" alt="StalkMe Extension Interface" width="50%">
 *The StalkMe extension interface showing captured cookies, form data, and network traffic*
 
 ## Features
@@ -39,7 +39,7 @@ A sample page (`sample_page.html`) is included for demonstration purposes. Open 
 - **Form monitoring**: Has a login form to demonstrate credential interception (monitoring is automatic)
 - **Content injection**: Has a demo field that can be filled by the extension
 
-![Sample Test Page](sample_page_demo_1764246244800.png)
+<img src="images/sample_page_demo.png" alt="Sample Test Page" width="50%">
 *Sample page for testing form monitoring, number scanning, and content injection*
 
 ### Testing Form Monitoring
@@ -66,7 +66,7 @@ A sample page (`sample_page.html`) is included for demonstration purposes. Open 
    - Set-Cookie headers from responses
    - HTTP status codes
 
-![Network Traffic Capture](network_traffic_capture_1764246278063.png)
+<img src="images/network_traffic_capture.png" alt="Network Traffic Capture" width="50%">
 *Network traffic monitor showing captured HTTP requests with sensitive headers highlighted*
 
 > [!NOTE]
