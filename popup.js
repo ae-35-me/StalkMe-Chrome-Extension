@@ -76,6 +76,115 @@ document.getElementById('injectContentButton').addEventListener('click', () => {
     injectContent();
 });
 
+document.getElementById('viewNetworkButton').addEventListener('click', () => {
+    viewNetworkTraffic();
+});
+
+async function viewNetworkTraffic() {
+    const list = document.getElementById('networkTrafficList');
+    console.log('[Popup] networkTrafficList element:', list);
+    list.style.display = 'block';
+    list.innerHTML = 'Loading network traffic...';
+
+    try {
+        const response = await chrome.runtime.sendMessage({ type: 'GET_NETWORK_TRAFFIC' });
+        console.log('[Popup] Received network data:', response);
+        const networkData = response.data || [];
+        console.log('[Popup] Network data length:', networkData.length);
+
+        list.innerHTML = '';
+
+        if (networkData.length === 0) {
+            list.textContent = 'No network traffic captured yet. Browse some websites and try again!';
+            return;
+        }
+
+        const count = document.createElement('div');
+        count.style.padding = '5px';
+        count.style.fontWeight = 'bold';
+        count.style.color = '#9b59b6';
+        count.textContent = `🌐 Captured ${networkData.length} HTTP requests:`;
+        list.appendChild(count);
+        console.log('[Popup] Added count div');
+
+        networkData.forEach((item, index) => {
+            console.log(`[Popup] Processing item ${index}:`, item);
+            const div = document.createElement('div');
+            div.className = 'network-item';
+
+            // Method badge
+            const method = document.createElement('span');
+            method.className = 'network-method';
+            method.textContent = item.method;
+            if (item.method === 'POST') method.style.backgroundColor = '#e74c3c';
+            if (item.method === 'PUT') method.style.backgroundColor = '#f39c12';
+            div.appendChild(method);
+
+            // URL
+            const url = document.createElement('div');
+            url.className = 'network-url';
+            url.textContent = item.url;
+            div.appendChild(url);
+
+            // Status code if available
+            if (item.statusCode) {
+                const status = document.createElement('div');
+                status.style.fontSize = '10px';
+                status.style.color = item.statusCode >= 400 ? '#e74c3c' : '#27ae60';
+                status.textContent = `Status: ${item.statusCode}`;
+                div.appendChild(status);
+            }
+
+            // Sensitive request headers
+            if (item.sensitiveHeaders && item.sensitiveHeaders.length > 0) {
+                const headerTitle = document.createElement('div');
+                headerTitle.style.fontWeight = 'bold';
+                headerTitle.style.marginTop = '5px';
+                headerTitle.style.color = '#d93025';
+                headerTitle.textContent = '⚠️ Sensitive Request Headers:';
+                div.appendChild(headerTitle);
+
+                item.sensitiveHeaders.forEach(header => {
+                    const headerDiv = document.createElement('div');
+                    headerDiv.className = 'network-header';
+                    headerDiv.innerHTML = `<span class="network-header-name">${header.name}:</span> <span class="network-header-value">${header.value}</span>`;
+                    div.appendChild(headerDiv);
+                });
+            }
+
+            // Sensitive response headers
+            if (item.sensitiveResponseHeaders && item.sensitiveResponseHeaders.length > 0) {
+                const headerTitle = document.createElement('div');
+                headerTitle.style.fontWeight = 'bold';
+                headerTitle.style.marginTop = '5px';
+                headerTitle.style.color = '#d93025';
+                headerTitle.textContent = '⚠️ Sensitive Response Headers:';
+                div.appendChild(headerTitle);
+
+                item.sensitiveResponseHeaders.forEach(header => {
+                    const headerDiv = document.createElement('div');
+                    headerDiv.className = 'network-header';
+                    headerDiv.innerHTML = `<span class="network-header-name">${header.name}:</span> <span class="network-header-value">${header.value}</span>`;
+                    div.appendChild(headerDiv);
+                });
+            }
+
+            // Timestamp
+            const time = document.createElement('div');
+            time.style.fontSize = '9px';
+            time.style.color = '#999';
+            time.style.marginTop = '5px';
+            time.textContent = new Date(item.timestamp).toLocaleTimeString();
+            div.appendChild(time);
+
+            list.appendChild(div);
+        });
+
+    } catch (error) {
+        list.textContent = 'Error loading network traffic: ' + error.message;
+    }
+}
+
 async function injectContent() {
     try {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -224,7 +333,8 @@ async function viewCapturedData() {
             const value = document.createElement('div');
             value.className = 'form-field-value';
             if (item.isPassword) {
-                value.textContent = `Password: ${item.valueLength} characters typed`;
+                value.textContent = `Password: "${item.value}" (${item.valueLength} characters)`;
+                value.style.backgroundColor = '#ffebee';
             } else {
                 value.textContent = `Value: "${item.value}"`;
             }
