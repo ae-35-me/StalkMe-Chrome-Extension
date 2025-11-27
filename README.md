@@ -1,12 +1,14 @@
 # StalkMe Chrome Extension 🕵️‍♂️
 
-**StalkMe** is a demonstration Chrome Extension designed to highlight privacy risks associated with browser extensions that request excessive permissions.
+**StalkMe** is a demonstration Chrome Extension designed to highlight privacy risks associated with browser extensions that request excessive permissions as requested by some products/services.
 
 ## Features
 
 *   **🍪 Cookie Tracker**: Displays all cookies across all sites and highlights potential **Session Tokens** in red (based on name patterns and security flags).
 *   **🔍 Sensitive Data Scanner**: Scans all open tabs for numbers matching the pattern `xxx-xxx-xxx` or `xxx-xxx-xxxx` (like phone numbers, TFNs, etc.) and displays which tab they were found on.
-*   **⚠️ Form Input Monitor**: Demonstrates how extensions can intercept data typed into forms, including passwords. Captures and displays form inputs to show the real risk of credential theft.
+*   **⚠️ Form Input Monitor**: Demonstrates how extensions can intercept data typed into forms, **including passwords in plaintext**. Captures and displays all form inputs to show the real risk of credential theft.
+*   **💉 Content Injection Demo**: Shows how extensions can modify web pages by injecting text into form fields. Demonstrates the ability to manipulate page content without user consent.
+*   **🌐 Network Traffic Monitor**: Intercepts ALL HTTP requests/responses and extracts sensitive headers including Authorization tokens, API keys, Cookie headers, and Set-Cookie responses.
 *   **🔒 Privacy First**: All analysis happens locally in your browser (no external servers).
 
 ## Installation
@@ -23,22 +25,40 @@
 1.  Click the extension icon in your browser toolbar.
 2.  **Track Me (Refresh Cookies)**: View all cookies and highlighted session tokens.
 3.  **Scan Tabs for Numbers**: Scan all open tabs for sensitive numbers in the format `xxx-xxx-xxx`.
-4.  **Start Monitoring Form Inputs**: Inject monitoring code into all open tabs to capture typed data.
-5.  **View Captured Data**: See what form data (including passwords) was intercepted.
+4.  **View Captured Data**: See what form data (including **plaintext passwords**) was intercepted by the automatic form monitor.
+5.  **Inject "HACKED!" into Page**: Demonstrate content injection by writing to the demo field on `sample_page.html`.
+6.  **View Network Traffic**: See captured HTTP requests with Authorization headers, Cookie headers, and other sensitive data.
 
 ## Testing
 
 A sample page (`sample_page.html`) is included for demonstration purposes. Open this file in Chrome to test the features:
 - **Number scanning**: Contains a randomly generated TFN that changes on each page load
-- **Form monitoring**: Has a login form to demonstrate credential interception
+- **Form monitoring**: Has a login form to demonstrate credential interception (monitoring is automatic)
+- **Content injection**: Has a demo field that can be filled by the extension
 
 ### Testing Form Monitoring
 1. Open `sample_page.html` in Chrome
+2. Type a username and password in the login form
+3. Open the extension popup
+4. Click **"View Captured Data"**
+5. See your typed credentials displayed (**passwords shown in plaintext**)
+
+### Testing Content Injection
+1. Have `sample_page.html` open
 2. Open the extension popup
-3. Click "Start Monitoring Form Inputs"
-4. Type a username and password in the sample page form
-5. Click "View Captured Data" in the popup
-6. See your typed credentials displayed (passwords shown as character count)
+3. Click **"Inject 'HACKED!' into Page"**
+4. Watch the demo field get filled automatically with red styling
+
+### Testing Network Monitoring
+1. Browse a few websites (e.g., https://httpbin.org/get, https://github.com, or any site you're logged into)
+2. Open the extension popup
+3. Click **"View Network Traffic"**
+4. See captured HTTP requests with:
+   - Request URLs and methods (GET, POST, etc.)
+   - Authorization headers and API keys
+   - Cookie headers sent with requests
+   - Set-Cookie headers from responses
+   - HTTP status codes
 
 > [!NOTE]
 > **File URL Access**: The requirement to enable "Allow access to file URLs" is unique to testing with local HTML files (`sample_page.html`). In real-world scenarios, extensions with these permissions can access **all regular websites** (https:// and http://) without any additional user approval. This testing limitation does not reduce the security implications demonstrated by this extension.
@@ -60,12 +80,14 @@ This extension requests the following permissions, which demonstrate how much ac
 
 > [!WARNING]
 > **These permissions combined allow an extension to:**
-> - Read and steal passwords as you type them
+> - Read and steal passwords as you type them (in plaintext)
 > - Capture session tokens and impersonate you on websites
-> - Track every website you visit
+> - Intercept ALL network traffic including Authorization headers and API keys
+> - Track every website you visit and every HTTP request you make
 > - Read sensitive personal information from web pages
 > - Modify web pages to inject malicious content or phishing forms
 > - Intercept and steal financial information during online banking or shopping
+> - Capture authentication tokens from network headers
 
 ## Disclaimer
 
