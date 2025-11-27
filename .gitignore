@@ -1,3 +1,120 @@
+# macOS System Files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+
+# Windows System Files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux System Files
+*~
+.directory
+.Trash-*
+
+# Editor & IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+.project
+.settings/
+.classpath
+*.sublime-project
+*.sublime-workspace
+
+# Logs
 *.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Node.js
 node_modules/
+npm-debug.log
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+dist/
+build/
+
+# Environment & Config Files
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+config.local.js
+secrets.json
+*.key
+*.pem
+*.p12
+*.crt
+*.cer
+
+# API Keys & Credentials (extra careful!)
+*api_key*
+*apikey*
+*secret*
+*password*
+*credentials*
+*token*
+*.credentials
+.google-cookie
+auth.json
+
+# Test & Coverage
+coverage/
+.nyc_output
+*.lcov
+.cache/
+
+# Backup Files
+*.backup
+*.old
+*.orig
+*.bkp
+
+# Temporary Files
+tmp/
+temp/
+*.temp
+*.tmp
+
+# Chrome Extension Specific
+# Uncomment if you want to exclude packed extensions
+# *.crx
+# *.pem
+# *.zip
+
+# Private keys for Chrome Web Store
+*.pem
+*.crx.pem
+
+# Extension artifacts
+web-ext-artifacts/
+
+# Debug/Development only files
+debug/
+test-data/
+sample-credentials/
+
+# Archives
+*.tar
+*.tar.gz
+*.zip
+*.rar
+*.7z
