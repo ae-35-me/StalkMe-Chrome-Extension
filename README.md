@@ -5,8 +5,8 @@
 ## Features
 
 *   **🍪 Cookie Collection**: Displays all cookies for the current site and highlights potential **Session Tokens** in red.
-*   **🤖 AI Surveillance**: Uses Chrome's experimental **Built-in AI (Gemini Nano)** to analyze your open tabs and generate a "creepy" summary of your online personality.
-*   **🔒 Privacy First**: All analysis happens **locally** on your device using the built-in model. No data is sent to external servers (unless you explicitly configured the legacy API fallback).
+*   **🤖 AI Surveillance**: Uses the **Gemini API** to analyze your open tabs and generate a "creepy" summary of your online personality.
+*   **🔒 Privacy First**: All analysis happens locally or via your own API key.
 
 ## Installation
 
@@ -16,15 +16,12 @@
 4.  Click **Load unpacked**.
 5.  Select the directory containing this extension.
 
-## Enabling Built-in AI
+## Usage
 
-To use the AI features, you must enable Chrome's experimental AI flags:
-
-1.  Go to `chrome://flags`.
-2.  Enable **"Prompt API for Gemini Nano"**.
-3.  Enable **"Enables optimization guide on device"** (select "Enabled BypassPerfRequirement").
-4.  Relaunch Chrome.
-5.  Go to `chrome://components` and ensure **"Optimization Guide On Device Model"** is downloaded.
+1.  Click the extension icon.
+2.  View your cookies and highlighted session tokens.
+3.  Enter your **Gemini API Key** in the input field.
+4.  Click **Analyze My Tabs** to see what the AI thinks of your browsing habits.
 
 ## Disclaimer
 

@@ -99,13 +99,9 @@
 
   <div class="ai-section">
     <h3>AI Surveillance</h3>
-    <div id="aiStatus" style="font-size: 12px; margin-bottom: 5px; color: #555;">Checking for built-in AI...</div>
-    <button id="recheckButton" style="display:none; background-color: #555; margin-bottom: 5px;">Recheck AI
-      Availability</button>
-    <button id="analyzeButton" disabled>Analyze My Tabs</button>
+    <input type="password" id="apiKey" placeholder="Enter Gemini API Key" />
+    <button id="analyzeButton">Analyze My Tabs</button>
     <div id="aiResult"></div>
-    <div id="debugInfo"
-      style="margin-top: 10px; font-size: 10px; color: #aaa; border-top: 1px solid #eee; padding-top: 5px;"></div>
   </div>
 
   <script src="popup.js"></script>

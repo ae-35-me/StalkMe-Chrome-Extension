@@ -2,18 +2,6 @@ chrome.runtime.onInstalled.addListener(() => {
   console.log("Extension installed");
 });
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === 'CHECK_AI') {
-    checkAI().then(sendResponse);
-    return true; // Keep channel open for async response
-  }
-
-  if (request.action === 'ANALYZE_TABS') {
-    analyzeTabs(request.prompt).then(sendResponse);
-    return true;
-  }
-});
-
 async function checkAI() {
   const ai = self.ai;
   if (!ai || !ai.languageModel) {
