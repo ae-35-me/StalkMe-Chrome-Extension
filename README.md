@@ -11,7 +11,7 @@
 
 📚 **[Contributing Guidelines](CONTRIBUTING.md)** | 🔒 **[Security Policy](SECURITY.md)** | 📄 **[License](LICENSE)**
 
-<img src="images/extension_popup_interface.png" alt="StalkMe Extension Interface" width="50%">
+<img src="src/images/extension_popup_interface.png" alt="StalkMe Extension Interface" width="50%">
 *The StalkMe extension interface showing captured cookies, form data, and network traffic*
 
 ## Features
@@ -82,7 +82,7 @@ A sample page (`sample_page.html`) is included for demonstration purposes. Open 
 - **Form monitoring**: Has a login form to demonstrate credential interception (monitoring is automatic)
 - **Content injection**: Has a demo field that can be filled by the extension
 
-<img src="images/sample_page_demo.png" alt="Sample Test Page" width="50%">
+<img src="src/images/sample_page_demo.png" alt="Sample Test Page" width="50%">
 *Sample page for testing form monitoring, number scanning, and content injection*
 
 ### Testing Form Monitoring
@@ -109,7 +109,7 @@ A sample page (`sample_page.html`) is included for demonstration purposes. Open 
    - Set-Cookie headers from responses
    - HTTP status codes
 
-<img src="images/network_traffic_capture.png" alt="Network Traffic Capture" width="50%">
+<img src="src/images/network_traffic_capture.png" alt="Network Traffic Capture" width="50%">
 *Network traffic monitor showing captured HTTP requests with sensitive headers highlighted*
 
 > [!NOTE]
