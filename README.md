@@ -23,6 +23,40 @@
 *   **🌐 Network Traffic Monitor**: Intercepts ALL HTTP requests/responses and extracts sensitive headers including Authorization tokens, API keys, Cookie headers, and Set-Cookie responses.
 *   **🔒 Privacy First**: All analysis happens locally in your browser (no external servers).
 
+## Technical Architecture
+
+This extension demonstrates how different components of a Chrome Extension interact to capture and process user data.
+
+```mermaid
+graph TD
+    User((User))
+    WebPage[Web Page / Tab]
+    ContentScript[content-monitor.js]
+    Background[background.js]
+    Popup[popup.html / popup.js]
+    Storage[(Chrome Storage)]
+
+    User -- Interacts with --> WebPage
+    WebPage -- "Input Events" --> ContentScript
+    ContentScript -- "Captured Data" --> Storage
+    
+    WebPage -- "Network Requests" --> Background
+    Background -- "Intercepted Headers" --> Storage
+    
+    User -- "Clicks Icon" --> Popup
+    Popup -- "Reads Data" --> Storage
+    Popup -- "Commands (Inject)" --> ContentScript
+    Popup -- "Queries" --> Background
+```
+
+### Component Overview
+
+*   **`manifest.json`**: The blueprint of the extension. It declares the extensive permissions (`webRequest`, `tabs`, `cookies`) and registers the background scripts and content scripts.
+*   **`background.js`**: Runs in the background independent of any specific tab. It uses the `webRequest` API to monitor all network traffic (HTTP headers, cookies) and stores captured data.
+*   **`content-monitor.js`**: Automatically injected into every webpage you visit. It attaches event listeners to form fields to capture keystrokes and input data in real-time, demonstrating how keylogging works.
+*   **`popup.html` & `popup.js`**: The visual interface. When opened, it retrieves the captured data (cookies, network logs, form inputs) from `chrome.storage` and displays it to the user. It also sends commands to the content script to demonstrate active content injection.
+*   **`sample_page.html`**: A controlled testing environment with a mock login form and sensitive data patterns to safely demonstrate the extension's capabilities without using real websites.
+
 ## Installation
 
 1.  Clone this repository.
