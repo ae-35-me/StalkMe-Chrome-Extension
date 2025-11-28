@@ -81,14 +81,19 @@ Before submitting, test:
 ## Project Structure
 
 ```
-├── manifest.json         # Extension configuration
-├── popup.html           # Extension popup UI
-├── popup.js             # Popup logic and UI handlers
-├── background.js        # Background service worker
-├── content-monitor.js   # Content script for page monitoring
-├── sample_page.html     # Test page for demonstrations
-├── images/              # Icons and screenshots
-└── README.md            # Project documentation
+├── src/
+│   ├── manifest.json         # Extension configuration
+│   ├── popup.html           # Extension popup UI
+│   ├── popup.js             # Popup logic and UI handlers
+│   ├── background.js        # Background service worker
+│   ├── content-monitor.js   # Content script for page monitoring
+│   ├── sample_page.html     # Test page for demonstrations
+│   └── images/              # Icons and screenshots
+├── .github/                 # Issue templates
+├── LICENSE                  # MIT License
+├── SECURITY.md              # Security Policy
+├── CONTRIBUTING.md          # Contribution Guidelines
+└── README.md                # Project documentation
 ```
 
 ## Review Process

@@ -29,7 +29,7 @@
 2.  Open Chrome and go to `chrome://extensions`.
 3.  Enable **Developer Mode** (top right).
 4.  Click **Load unpacked**.
-5.  Select the directory containing this extension.
+5.  Select the `src` directory inside this repository.
 6.  **Important**: Click "Details" on the extension card, scroll down and enable "Allow access to file URLs" to test with `sample_page.html`.
 
 ## Usage
